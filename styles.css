@@ -20,26 +20,10 @@ input {
 	height: 40px;
 }
 
-button {
-	display: flex;
-	justify-content: center;
-	width: 93%;
-	margin: 0px auto 30px;
-	background-color: #ffc107;
-	font-size: 20px;
-	font-weight: 400;
-	color: #fff;
-	height: 45px;
-}
-
-button:hover {
-	background-color: #ffd773;
-}
-
 img {
 	padding: 0px 15px;
-	width: 100px;
-	height: 100px;
+	width: 50px;
+	height: 50px;
 }
 
 section {
@@ -51,16 +35,33 @@ section {
 	box-sizing: border-box;
 }
 
-.main-heading {
+h1 {
+	font-size: 34px;
 	width: 100%;
-	font-size: 65px;
 	color: #fff;
 	font-weight: 800;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 130px;
+	margin: 130px auto 0px;
 	letter-spacing: 2px;
+}
+
+.enter-button {
+	font-family: "Open Sans", sans-serif;
+	display: flex;
+	justify-content: center;
+	width: 93%;
+	margin: 0px auto 30px;
+	background-color: #ffc107;
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+	height: 45px;
+}
+
+.enter-button:hover {
+	background-color: #ffd773;
 }
 
 .bookmark-card {
@@ -88,11 +89,16 @@ section {
 
 .read-button,
 .delete-button {
+	font-family: "Open Sans", sans-serif;
+	font-size: 100%;
+	border: 0px;
+	padding: 0px;
 	display: inline-block;
 	position: relative;
 	width: 10%;
 	margin-left: 10px;
 	color: #455A64;
+
 }
 
 .appended-url:hover,
@@ -103,6 +109,31 @@ section {
 	text-decoration: underline #ffc107;
 }
 
+@media screen and (min-width: 1005px) {
+	.main-heading {
+		font-size: 65px;
+	}
 
+	img {
+		width: 100px;
+		height: 100px;
+	}
 
+}
+ 
+@media screen and (max-width: 685px) {
+	main,
+	section {
+		height: 100%;
+		width: 100%;
+	}
+
+	input {
+		width: 85%;
+	}
+
+	.enter-button {
+		width: 91%;
+	}
+} 
 
