@@ -1,28 +1,71 @@
-var titleInput = document.querySelector(".title-input");
-var urlInput = document.querySelector(".website-url");
+var titleInput = document.querySelector("#title-input");
+var urlInput = document.querySelector("#url-input");
 var enterButton = document.querySelector("#form-enter-button");
-var bookMarkSection = document.querySelector("#bookmark-section");
+var bookmarkSection = document.querySelector("#bookmark-section");
+var bookmarkCard = document.querySelector("#bookmark-card");
+var readButton = document.querySelector('#read');
+var appendedUrl = document.querySelector("#appended-url");
+var deleteButton = document.querySelector("#delete");
 
 enterButton.addEventListener('click', appendCard);
 
-console.log(titleInput);
 function appendCard(e) {
-	bookMarkSection.innerHTML = 
-	`<article class="bookmark-card">
-  		<h1 class="appended-title">${titleInput}</h1>
-  		<a href="${urlInput}" class="appended-url">${urlInput}</a>
+	bookmarkSection.innerHTML = 
+	`<article class="bookmark-card" id="bookmark-card">
+  		<h1 class="appended-title">${titleInput.value}</h1>
+  		<a href="${urlInput.value}" class="appended-url" id="appended-url">${urlInput.value}</a>
   		<br>
-  		<a href="" class="read-button">Read</a>
-  		<a href="" class="delete-button">Delete</a>
-  	</article>` + bookMarkSection.innerHTML;
+  		 <button type="button" class="read read-button" id="read">Read</a>
+  		 <button type="button" class="delete-button" id="delete">Delete</a>
+  	</article>` + bookmarkSection.innerHTML;
+	var deleteButton = document.querySelector("#delete");
+	var readButton = document.querySelector(".read");
+	var bookmarkCard = document.querySelector("#bookmark-card");
+
+	readButton.addEventListener('click', bookmarkRead);
+	deleteButton.addEventListener('click', removeCard);
+  	e.preventDefault();
 }
 
+function bookmarkRead(e) {
+	var bookmarkCard = document.querySelector(".bookmark-card");
+	var readButton = document.querySelector(".read");
+	var appendedUrl = document.querySelector("#appended-url");
+	bookmarkCard.style.backgroundColor = "#f2f4f4";
+	readButton.style.color = "#f05a28";
+	appendedUrl.style.textDecoration = "underline #cfd8dc";
 
+	if (bookmarkCard.style.backgroundColor == "fff") {
+	bookmarkCard.style.backgroundColor = "#f2f4f4";
+	} else if (bookmarkCard.style.backgroundColor == "f2f4f4") {
+		bookmarkCard.style.backgroundColor = "#fff";
+	}
+	if (readButton.style.color == "#455a64") {
+	readButton.style.color = "#f05a25";
+	} else if (readButton.style.color == "#f05a25") {
+		readButton.style.color = "#455a64";
+	}
+	if (appendedUrl.textDecoration == "underline #f2f4f4") {
+	appendedUrl.textDecoration = "underline #cfd8dc";
+	} else if (appendedUrl.style.textDecoration == "underline #cfd8dc") {
+		appendedUrl.style.textDecoration = "underline #f2f4f4";
+	}
+}
 
+function removeCard(e) {
+	bookmarkSection.innerHTML = "";
+}
+// function unRead(e) {
+// 	var bookmarkCard = document.querySelector(".bookmark-card");
+// 	var readButton = document.querySelector(".read");
 
+// 	bookmarkCard.style.backgroundColor = "#fff";
+// 	read.style.color = "#455a64";
+// 	appendedUrl.textdecoration = "underline f2f4f4";
+// }
 
-
-
+	// <a href="" id="read-button" class="read-button">Read</a>
+ //  		<a href="" id="delete-button" class="delete-button">Delete</a>
 
 
 //Create a form with two inputs, one for Title, and one for a URL.
