@@ -4,48 +4,53 @@ var enterButton = document.querySelector("#form-enter-button");
 var bookmarkSection = document.querySelector("#bookmark-section");
 var cardCounter = 0;
 
+
 enterButton.addEventListener('click', appendCard);
+enterButton.addEventListener('click', function(e) {
+	if (titleInput.value === "" || urlInput.value === "") {
+		alert("Please Enter a title and/or URL");
+	} 
+	
+});
 
 function appendCard(e) {
 	cardCounter = cardCounter + 1;
-	var bookMarkId = "bookmark-card" + cardCounter;
+	var bookmarkId = "bookmark-card" + cardCounter;
 	var appendUrlId = "appended-url" + cardCounter;
-	var readId = "read-button" + cardCounter;
+	var readId = "read" + cardCounter;
 	var deleteId = "delete-button" + cardCounter;
 	bookmarkSection.innerHTML = 
-	`<article class="bookmark-card" id="${bookMarkId}" >
+	`<article class="bookmark-card" id="${bookmarkId}" data-card="${cardCounter}">
   		<h1 class="appended-title">${titleInput.value}</h1>
-  		<a href="${urlInput.value}" class="appended-url" id="${appendUrlId}">${urlInput.value}</a>
-  		<br>
-  		 <button type="button" class="read-button" data-card="${cardCounter}" data-cardRead="0" id="${readId}">Read</a>
-  		 <button type="button" class="delete-button" id="${deleteId}">Delete</a>
+  		<a href="${urlInput.value}" class="appended-url" 
+  		id="${appendUrlId}">${urlInput.value}</a>
+  		 <button type="button" class="read" data-card="${cardCounter}" 
+  		 data-cardRead="0" id="${readId}">Read</button>
+  		 <button type="button" class="delete-button" data-card="${cardCounter}"
+  		 id="${deleteId}">Delete</button>
   	</article>` + bookmarkSection.innerHTML;
 	var deleteButtonArray = document.querySelectorAll(".delete-button");
-	var readButtonArray = document.querySelectorAll(".read-button");
-
+	var readButtonArray = document.querySelectorAll(".read");
 
 	for (var i = 0; i < readButtonArray.length; i++) {
 		readButtonArray[i].addEventListener('click', bookmarkRead);
 	}
 
+	for (var i = 0; i < deleteButtonArray.length; i++) {
+		deleteButtonArray[i].addEventListener('click', removeCard);
+	}
   	e.preventDefault();
 }
 
 function bookmarkRead(e) {
-	console.log(e.target.getAttribute("data-card"));
-	var bookMarkId = "bookmark-card" + e.target.getAttribute("data-card");
-	var readId = "read-button" + e.target.getAttribute("data-card");
+	var bookmarkId = "bookmark-card" + e.target.getAttribute("data-card");
+	var readId = "read" + e.target.getAttribute("data-card");
 	var appendUrlId = "appended-url" + e.target.getAttribute("data-card");
 	var isCardRead = e.target.getAttribute("data-cardRead");
-	var bookmarkCard = document.querySelector("#" + bookMarkId);
+	var bookmarkCard = document.querySelector("#" + bookmarkId);
 	var readButton = document.querySelector("#" + readId);
 	var appendedUrl = document.querySelector("#" + appendUrlId);
-	// bookmarkCard.style.backgroundColor = "#f2f4f4";
-	// readButton.style.color = "#f05a28";
-	// appendedUrl.style.textDecoration = "underline #cfd8dc";
 
-	// readButton.addEventListener('click', unRead);
-	alert(bookmarkCard.style.color);
 	if (isCardRead == 0 ){
 	bookmarkCard.style.backgroundColor = "#f2f4f4";
 	} else {
@@ -68,48 +73,25 @@ function bookmarkRead(e) {
 	}
 }
 
-// function unRead(e) {
-// 	var bookmarkCard = document.querySelector(".bookmark-card");
-// 	var readButton = document.querySelector(".read");
-// 	var appendedUrl = document.querySelector("#appended-url");
-
-
-// 	if (bookmarkCard.style.backgroundColor == "#fff") {
-// 	bookmarkCard.style.backgroundColor = "#f2f4f4";
-// 	} else if (bookmarkCard.style.backgroundColor == "f2f4f4") {
-// 		bookmarkCard.style.backgroundColor = "#fff";
-// 	}
-// 	if (readButton.style.color == "#455a64") {
-// 	readButton.style.color = "#f05a25";
-// 	} else if (readButton.style.color == "#f05a25") {
-// 		readButton.style.color = "#455a64";
-// 	}
-// 	if (appendedUrl.textDecoration == "underline #f2f4f4") {
-// 	appendedUrl.textDecoration = "underline #cfd8dc";
-// 	} else if (appendedUrl.style.textDecoration == "underline #cfd8dc") {
-// 		appendedUrl.style.textDecoration = "underline #f2f4f4";
-// 	}
-// }
 
 function removeCard(e) {
-	bookmarkSection.innerHTML = "";	
+	var deleteButtonArray = document.querySelectorAll(".delete-button");
+	var deleteButtonId = "delete-button" + e.target.getAttribute("data-card");
+	var deleteId = document.querySelector("#" + deleteButtonId);
+	var bookmarkId = "bookmark-card" + e.target.getAttribute("data-card");
+	var bookmarkCard = document.querySelector("#" + bookmarkId);
+	var deleteCard = document.getElementById(bookmarkId);
+	deleteCard.classList.remove("bookmark-card");
 }
 
+// function preventEnter(e) {
+// 	if ()
+// }
 
-	// <a href="" id="read-button" class="read-button">Read</a>
- //  		<a href="" id="delete-button" class="delete-button">Delete</a>
 
 
-//Create a form with two inputs, one for Title, and one for a URL.
 
-//Create a button that says "Enter". And have it listen to (onclick). And a function
-// that appends a bookmark card into the right section of the page.
 
-//Add a button ('Read') to the appeneded card. With a class of .read, so that
-//after the button is clicked it becomes red and the card background is darker. 
-
-//Use a conditional that says, if .read button has been clicked, when it is clicked again
-//it removes the .read styles (back to normal).
 
 //Add an eventListener for the Delete button, so when its clicked the appended bookmark
 //card will be removed from the page.
