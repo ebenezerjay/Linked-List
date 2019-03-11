@@ -10,9 +10,9 @@ creating the link you can click the 'Read' button to show that youv'e read the l
 the bookmark. And if you don't want to keep that bookmark you can delete it by clicking on the 'Delete' button. The application keeps
 track of all the total bookmarks and the total youv'e read as well as the unread bookmarks.
 ## Screenshots for comp
-![comp screenshot](/images/screenshot-comp-desktop.png)
-![comp mobile screenshot](/imgages/screenshot-comp-mobile.png)
+![comp screenshot](/images/screenshotCompDesktop.png)
+![comp mobile screenshot](/images/screenshotCompMobile.png)
 ## Screenshots for project
-![project screenshot desktop](/images/screenshots-desktop.png)
-![project screenshot mobile1](/images/screenshot-mobile1.png)
-![project screenshot mobile2](/images/screenshot-mobile2.png)
+![project screenshot desktop](/images/screenshotDesktop.png)
+![project screenshot mobile1](/images/screenshotMobile1.png)
+![project screenshot mobile2](/images/screenshotMobile2.png)
