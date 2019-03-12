@@ -100,10 +100,9 @@ function displayCounters() {
 	`<h4 class="counter-headings">Total bookmarks on page ${bookmarkArray.length}</h4>
 	 <h4 class="counter-headings">Bookmarks read ${readButtonArray.length}</h4>
 	 <h4 class="counter-headings">Unread bookmarks ${unreadButtonArray.length}</h4>
-	 <button class="clear-button" type="submit" id="clear-button">Clear all read bookmarks</button>
 	` 
-	var clearButton = document.querySelector(".clear-button");
-	clearButton.addEventListener('click', clearAllread);
+	// var clearButton = document.querySelector(".clear-button");
+	// clearButton.addEventListener('click', clearAllread);
 }
 
 function removeCard(e) {
